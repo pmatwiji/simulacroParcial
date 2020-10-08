@@ -1,0 +1,51 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container-md">
+      <h1 class="display-3 text-center">Listado de peliculas</h1>
+      <!-- <p><a class="btn btn-primary btn-lg" role="button" (click)="cambiarVista()">Cambiar vista</a></p> -->
+      <div class="row overflow-auto" style="max-height: 500px;">
+        <table class="table table-striped" *ngIf="!vistaTabla">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Fecha de Estreno</th>
+              <th scope="col">Cantidad de publico</th>
+              <th scope="col">Poster</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pelicula of peliculas" (dblclick)="verDetallesPelicula(pelicula)">
+              <td>{{ pelicula.id }}</td>
+              <td>{{ pelicula.nombre }}</td>
+              <td>{{ pelicula.tipo }}</td>
+              <td>{{ pelicula.fechaEstreno }}</td>
+              <td>{{ pelicula.cantidadPublico }}</td>
+              <td><img [src]="pelicula.fotoPelicula" class="" style="width: 100px; height: 100px;"></td>
+              <td><button type="button" class="btn btn-sm btn-outline-secondary" (click)="verDetallesPelicula(pelicula)">Detalle</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    
+      <div class="col-md d-flex flex-wrap justify-content-center " *ngIf="vistaTabla && wait">
+        <div class="card m-4 shadow-sm" *ngFor="let pelicula of coleccionPeliculas" (dblclick)="verDetallesPelicula(pelicula)">
+          <img src="{{pelicula.fotoPelicula}}" alt="" class="card-img-top" style="width: 300px; height: 500px;">
+          <p class="card-text text-center mt-3">{{pelicula.nombre}}</p>
+          <div class="card-body d-flex row justify-content-around">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="verDetallesPelicula(pelicula)">Detalle</button>
+            <!-- <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="checkRoute() == '/busqueda'" (click)="verBorrarPelicula(pelicula)">Borrar</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="checkRoute() == '/busqueda'" (click)="verModificarPelicula(pelicula)">Modificar</button> -->
+          </div>
+        </div>
+      </div>
+    
+  </div>
+
+
+
+</main>

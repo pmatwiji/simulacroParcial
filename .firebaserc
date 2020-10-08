@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "simulacroparcial-labo4": {
+      "hosting": {
+        "simulacroParcial": [
+          "simulacroparcial-labo4"
+        ]
+      }
+    }
+  }
+}

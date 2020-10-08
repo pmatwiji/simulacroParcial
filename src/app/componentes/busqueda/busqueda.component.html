@@ -1,0 +1,16 @@
+<app-tabla-pelicula [coleccionPeliculas]="listaElementos" (detallesEvent)="traerDetalle($event)" (borrarEvent)="traerBorrar($event)"></app-tabla-pelicula>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <app-borrar-pelicula [inputElementoBorrar]="elementoBorrar" class="col-md-4" *ngIf="elementoBorrar"></app-borrar-pelicula>
+
+      <app-detalle-pelicula [inputElementoDetalle]="elementoDetalle" class="col-md-4" *ngIf="elementoDetalle"></app-detalle-pelicula>
+
+    </div>
+
+    <hr>
+
+</div>
+
+

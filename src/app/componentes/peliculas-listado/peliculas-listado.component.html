@@ -1,0 +1,5 @@
+<app-tabla-pelicula [coleccionPeliculas]="listaElementos" (detallesEvent)="traerDetalle($event)"></app-tabla-pelicula>
+
+<div class="row d-flex justify-content-center">
+    <app-detalle-pelicula [inputElementoDetalle]="elementoDetalle" [borrado]="1" (borrarPelicula)="agarrarBorrarPelicula($event)" class="col-md-4" *ngIf="elementoDetalle"></app-detalle-pelicula>
+</div>
