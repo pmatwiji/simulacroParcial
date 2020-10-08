@@ -3,9 +3,6 @@ import { DatabaseService } from '../../servicios/database.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-
-
-
 @Component({
   selector: 'app-peliculas-listado',
   templateUrl: './peliculas-listado.component.html',
