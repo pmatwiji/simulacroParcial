@@ -1,0 +1,27 @@
+<main role="main">
+  <div class="jumbotron">
+    <div class="container-md">
+      <h1 class="display-3 text-center">Paises</h1>
+      <!-- <p><a class="btn btn-primary btn-lg" role="button" (click)="cambiarVista()">Cambiar vista</a></p> -->
+      <div class="row overflow-auto" style="max-height: 300px;">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Bandera</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pais of listaPaises">
+              <td>{{ pais.name }}</td>
+              <td><img [src]="pais.flag" class="" style="width: 200px; height: 100px;"></td>
+              <td><button type="button" class="btn btn-sm btn-outline-secondary" (click)="emitirPais(pais)">Agregar</button></td>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+
+</main>

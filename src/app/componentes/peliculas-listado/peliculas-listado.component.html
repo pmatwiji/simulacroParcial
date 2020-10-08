@@ -1,5 +1,9 @@
-<app-tabla-pelicula [coleccionPeliculas]="listaElementos" (detallesEvent)="traerDetalle($event)"></app-tabla-pelicula>
-
-<div class="row d-flex justify-content-center">
-    <app-detalle-pelicula [inputElementoDetalle]="elementoDetalle" [borrado]="1" (borrarPelicula)="agarrarBorrarPelicula($event)" class="col-md-4" *ngIf="elementoDetalle"></app-detalle-pelicula>
+<!-- <app-tabla-pelicula [coleccionPeliculas]="listaElementos" (detallesEvent)="traerDetalle($event)"></app-tabla-pelicula> -->
+<div class="container d-flex justify-content-around" style="margin-top: 10%;">
+        <app-alta-actor class="container-md" [nacionalidad]="paisSeleccionado" ></app-alta-actor>
+        <app-tabla-paises class="container-md" (paisEmitido)="agarrarPais($event)"></app-tabla-paises>
 </div>
+
+<!-- <div class="row d-flex justify-content-center">
+    <app-detalle-pelicula [inputElementoDetalle]="elementoDetalle" [borrado]="1" (borrarPelicula)="agarrarBorrarPelicula($event)" class="col-md-4" *ngIf="elementoDetalle"></app-detalle-pelicula>
+</div> -->

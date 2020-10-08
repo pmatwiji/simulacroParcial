@@ -14,6 +14,8 @@ export class PeliculasListadoComponent implements OnInit {
 
   listaElementos: any;
   elementoDetalle: any;
+
+  paisSeleccionado:any;
  
 
 
@@ -37,6 +39,12 @@ export class PeliculasListadoComponent implements OnInit {
   agarrarBorrarPelicula(pelicula:any){
     this.dbService.borrarElemento('peliculas',pelicula.nombre);
   }
+
+  agarrarPais(pais:any){
+    this.paisSeleccionado=pais.name;
+  }
+
+
 
   
 
