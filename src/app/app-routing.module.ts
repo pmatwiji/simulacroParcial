@@ -10,12 +10,12 @@ import { PeliculasListadoComponent } from './componentes/peliculas-listado/pelic
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/busqueda', pathMatch: 'full'},
+  {path: '', redirectTo: '/actor/listado', pathMatch: 'full'},
   {path: 'bienvenido', component: BienvenidoComponent},
-  {path: 'busqueda', component: BusquedaComponent},
+  {path: 'actor/listado', component: BusquedaComponent},
   {path: 'peliculas/alta', component: PeliculaAltaComponent},
   {path: 'actor/alta', component: ActorAltaComponent},
-  {path: 'actor/listado', component: ActorListadoComponent},
+  //{path: 'actor/listado', component: ActorListadoComponent},
   {path: 'peliculas/listado', component: PeliculasListadoComponent}
 ];
 

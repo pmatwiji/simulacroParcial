@@ -14,12 +14,11 @@ export class DetallePeliculaComponent implements OnInit {
 
   @Output() borrarPelicula: EventEmitter<any> = new EventEmitter();
 
-  id:any= '';
+  apellido:any= '';
   nombre:string='';
-  tipo:string='';
+  sexo:string='';
   fecha:string='';
-  publico:any='';
-
+  nacionalidad:any='';
 
   constructor(private router:Router,private dbService: DatabaseService) {
 
@@ -29,19 +28,19 @@ export class DetallePeliculaComponent implements OnInit {
   }
 
   ngOnChanges():void{
-    this.id = this.inputElementoDetalle.id;
+    this.apellido = this.inputElementoDetalle.apellido;
     this.nombre = this.inputElementoDetalle.nombre;
-    this.tipo = this.inputElementoDetalle.tipo;
-    this.fecha = this.inputElementoDetalle.fechaEstreno;
-    this.publico = this.inputElementoDetalle.cantidadPublico;
+    this.sexo = this.inputElementoDetalle.sexo;
+    this.fecha = this.inputElementoDetalle.fechaNacimiento;
+    this.nacionalidad = this.inputElementoDetalle.nacionalidad;
   }
 
   reset(){
-    this.id = '';
+    this.apellido = '';
     this.nombre = '';
-    this.tipo = '';
+    this.sexo = '';
     this.fecha = '';
-    this.publico = '';
+    this.nacionalidad = '';
   }
 
   checkRoute(){
@@ -51,6 +50,10 @@ export class DetallePeliculaComponent implements OnInit {
   emitirBorrarPelicula(pelicula){
     this.borrarPelicula.emit(pelicula);
     this.reset();
+  }
+
+  borrar(coleccion:string,doc:string){
+    this.dbService.borrarElemento(coleccion,doc);
   }
 
 }

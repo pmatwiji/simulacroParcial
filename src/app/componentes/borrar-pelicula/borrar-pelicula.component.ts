@@ -11,11 +11,11 @@ export class BorrarPeliculaComponent implements OnInit {
 
   @Input() inputElementoBorrar: any;
 
-  id:any= '';
+  apellido:any= '';
   nombre:string='';
-  tipo:string='';
+  sexo:string='';
   fecha:string='';
-  publico:any='';
+  nacionalidad:any='';
 
 
   constructor(private router:Router,private dbService: DatabaseService) {
@@ -26,19 +26,19 @@ export class BorrarPeliculaComponent implements OnInit {
   }
 
   ngOnChanges():void{
-    this.id = this.inputElementoBorrar.id;
+    this.apellido = this.inputElementoBorrar.apellido;
     this.nombre = this.inputElementoBorrar.nombre;
-    this.tipo = this.inputElementoBorrar.tipo;
-    this.fecha = this.inputElementoBorrar.fechaEstreno;
-    this.publico = this.inputElementoBorrar.cantidadPublico;
+    this.sexo = this.inputElementoBorrar.sexo;
+    this.fecha = this.inputElementoBorrar.fechaNacimiento;
+    this.nacionalidad = this.inputElementoBorrar.nacionalidad;
   }
 
   reset(){
-    this.id = '';
+    this.apellido = '';
     this.nombre = '';
-    this.tipo = '';
+    this.sexo = '';
     this.fecha = '';
-    this.publico = '';
+    this.nacionalidad = '';
   }
 
   checkRoute(){

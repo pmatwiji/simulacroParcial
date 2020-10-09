@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BusquedaComponent implements OnInit {
 
   elementos:Observable<any[]>;
-  listaElementos: any;
+  listaActores: any;
   elementoDetalle: any;
   elementoBorrar: any;
 
@@ -19,12 +19,12 @@ export class BusquedaComponent implements OnInit {
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit(): void {
-    this.traerListaActualizada();
+      this.traerListaActualizada();
   }
 
   traerListaActualizada(){
-    this.elementos = this.dbService.traerColeccion('peliculas');
-    this.elementos.subscribe(elementos => this.listaElementos = elementos,error => console.log(error));
+    this.elementos = this.dbService.traerColeccion('actores');
+    this.elementos.subscribe(elementos => this.listaActores = elementos,error => console.log(error));
   }
 
   traerDetalle(elemento){

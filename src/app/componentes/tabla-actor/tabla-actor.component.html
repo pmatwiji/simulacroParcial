@@ -1,1 +1,21 @@
-<p>tabla-actor works!</p>
+<main role="main">
+    <div class="jumbotron">
+      
+        <div class="col-md d-flex flex-wrap justify-content-center ">
+          <div class="card m-4 shadow-sm" *ngFor="let actor of coleccionActores">
+            <img src="{{actor.foto}}" alt="" class="card-img-top" style="width: 300px; height: 500px;">
+            <p class="card-text text-center mt-3">{{actor.nombre}} {{actor.apellido}}</p>
+            <div class="card-body d-flex row justify-content-around">
+              <button type="button" class="btn btn-sm btn-outline-secondary" (click)="verDetallesActor(actor)">Detalle</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" (click)="verBorrarActor(actor)">Borrar</button>
+             <!--  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="checkRoute() == '/busqueda'" (click)="verModificarPelicula(pelicula)">Modificar</button> -->
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  
+  
+  
+  </main>
+  
