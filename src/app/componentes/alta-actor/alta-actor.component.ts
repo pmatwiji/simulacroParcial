@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { DatabaseService } from '../../servicios/database.service';
+import { ApiPaisesService } from '../../servicios/api-paises.service';
 
 
 @Component({
@@ -13,13 +12,21 @@ export class AltaActorComponent implements OnInit {
 
   nombre:any;
   apellido:any;
-  sexo:any= 'masculino';
+  sexo = null;
   fechaNacimiento:any;
-  @Input() nacionalidad:any;
+  nacionalidad:any;
   correcto:boolean = false;
+ 
+  listaPaises:any;
+  
 
 
-  constructor(private db : AngularFireDatabase, private dbService:DatabaseService) { }
+  constructor(private dbService: DatabaseService,private api:ApiPaisesService) { 
+    this.api.obtenerListadoParametro('https://restcountries.eu/rest/v2/region/europe').subscribe((data:any) => {
+      this.listaPaises= data;      
+    });
+    
+  }
 
   ngOnInit(): void {
 
@@ -27,7 +34,7 @@ export class AltaActorComponent implements OnInit {
 
   crearActor() {
     if(this.nombre != null && this.apellido != null && this.sexo != null && this.fechaNacimiento != null && this.nacionalidad != null) {
-      this.dbService.agregarElemento('actores',this.nombre + ' ' + this.apellido,{apellido:this.apellido,nombre:this.nombre,fechaNacimiento:this.fechaNacimiento,sexo:this.sexo,activo:true,nacionalidad:this.nacionalidad,foto:'https://lh3.googleusercontent.com/proxy/OaeyXouE_W69vofJ7rOiXv4la6qyY0CvyWUUIplRnhnjO0RmXxslfwwmuFTR_6TcIQZY1_vU44Wtr8f9i2MVHAmB4lS_dy8qTjTAldI-TOA9HGvrF_VtZWR8Bu4'})
+      this.dbService.agregarElemento('actores',this.nombre + ' ' + this.apellido,{apellido:this.apellido,nombre:this.nombre,fechaNacimiento:this.fechaNacimiento,sexo:this.sexo,activo:true,nacionalidad:this.nacionalidad,foto:'https://censur.es/wp-content/uploads/2019/03/default-avatar.png', nombreDoc: this.nombre + ' ' + this.apellido})
       this.reset();
       this.correcto=true;
       setTimeout(() => {
@@ -42,6 +49,10 @@ export class AltaActorComponent implements OnInit {
     this.sexo='';
     this.fechaNacimiento='';
     this.nacionalidad='';
+  }
+
+  agarrarPais(pais:any){
+    this.nacionalidad=pais.name;
   }
 
 }

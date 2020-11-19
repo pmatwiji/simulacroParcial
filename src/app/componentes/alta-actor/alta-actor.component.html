@@ -1,39 +1,48 @@
-<div class="row">
-    <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Alta Actor</h4>
-      <form class="needs-validation" novalidate>
-        <div class="mb-3">
-          <label for="nombre">Nombre</label>
-          <input [(ngModel)]="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre">
-        </div>
+<div class="background">
+  <div class="container m-5 d-flex justify-content-center">
+    <div class="row mt-5 ">
+      <div class="col ">
+        <h4 class="mb-3">Alta Actor</h4>
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="nombre">Nombre</label>
+            <input [(ngModel)]="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre">
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="apellido">Apellido</label>
             <input [(ngModel)]="apellido" type="text" class="form-control" name="apellido" placeholder="Apellido">
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="sexo">Sexo</label>
             <select class="custom-select d-block w-100" id="sexo" [(ngModel)]="sexo" name="sexo" required>
-              <option value="masculino" selected>Masculino</option>
+              <option [ngValue]="null" [disabled]="true">Seleccione el sexo</option>
+              <option value="masculino">Masculino</option>
               <option value="femenino">Femenino</option>
             </select>
-        </div>
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="nacimiento">Fecha De Nacimiento</label>
-            <input [(ngModel)]="fechaNacimiento" type="Date" name="nacimiento" class="form-control" id="nacimiento" placeholder="dd/mm/yyyy">
-        </div>
+            <input [(ngModel)]="fechaNacimiento" type="Date" name="fechaNacimiento" class="form-control" id="nacimiento"
+              placeholder="dd/mm/yyyy">
+          </div>
 
-        <div class="mb-3">
+          <div class="mb-3">
             <label for="nacionalidad">Nacionalidad</label>
-            <input [(ngModel)]="nacionalidad" type="text" class="form-control" name="nacionalidad" placeholder="Nacionalidad" disabled>
-        </div>
+            <input [(ngModel)]="nacionalidad" type="text" class="form-control" name="nacionalidad"
+              placeholder="Nacionalidad" disabled>
+          </div>
 
 
-        <button class="btn btn-primary btn-lg btn-block" type="button" (click)="crearActor()">Cargar Actor</button>
-        <p class="mt-2" *ngIf="correcto">Se cargo correctamente</p>
-      </form>
+          <button class="btn btn-primary btn-lg btn-block" type="button" (click)="crearActor()">Cargar Actor</button>
+          <p class="mt-2" *ngIf="correcto">Se cargo correctamente</p>
+        </form>
+      </div>
+
+      <app-tabla-paises class="col" (paisEmitido)="agarrarPais($event)" [listaPaises]="listaPaises"></app-tabla-paises>
+
     </div>
   </div>
-  <!-- <app-tabla-actor (actorEmitido)="agarrarActor($event)" [listaActores]="listaActores"></app-tabla-actor> -->
+</div>

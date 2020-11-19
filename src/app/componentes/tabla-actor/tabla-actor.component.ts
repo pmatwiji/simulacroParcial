@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-tabla-actor',
@@ -8,31 +8,19 @@ import { Router } from '@angular/router';
 })
 export class TablaActorComponent implements OnInit {
 
-  @Input() coleccionActores: any [];
-  @Output() detallesEvent = new EventEmitter<any>();
-  @Output() borrarEvent = new EventEmitter<any>();
+  @Input() listaActores: any;
+  @Output() ActorEmitido: EventEmitter<any> = new EventEmitter();
 
-  @Output() modificarEvent = new EventEmitter<any>();
-''
-
-  constructor(private router:Router) { }
+  constructor() {
+   }
 
   ngOnInit(): void {
-
   }
 
-
-  verDetallesActor(actor){
-    this.detallesEvent.emit(actor);
+  emitirActor(actor) {
+    this.ActorEmitido.emit(actor);
   }
 
-  verBorrarActor(actor){
-    this.borrarEvent.emit(actor);
-  }
-
-  verModificarActor(actor){
-    this.modificarEvent.emit(actor);
-  }
-
+ 
 
 }

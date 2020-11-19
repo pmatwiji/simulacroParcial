@@ -20,5 +20,9 @@ export class DatabaseService {
   borrarElemento(coleccion,documento){
       this.db.collection(coleccion).doc(documento).update({activo: false})
   }
+
+  modificarElemento(coleccion,documento,nombre,apellido,sexo,fechaNacimiento,nacionalidad){
+    this.db.collection(coleccion).doc(documento).update({nombre: nombre,apellido: apellido, sexo:sexo,fechaNacimiento:fechaNacimiento,nacionalidad:nacionalidad,nombreDoc: documento})
+  }
   
 }

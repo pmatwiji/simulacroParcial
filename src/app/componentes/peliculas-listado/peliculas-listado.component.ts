@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../servicios/database.service';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { ApiPaisesService } from '../../servicios/api-paises.service';
+
 
 @Component({
   selector: 'app-peliculas-listado',
@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class PeliculasListadoComponent implements OnInit {
 
-  elementos:Observable<any[]>;
 
+  listaPaises:any;
   listaElementos: any;
   elementoDetalle: any;
 
@@ -19,25 +19,15 @@ export class PeliculasListadoComponent implements OnInit {
  
 
 
-  constructor(private dbService: DatabaseService, private firestore: AngularFirestore) { 
+  constructor(private dbService: DatabaseService,private api:ApiPaisesService) { 
+    this.api.obtenerListadoParametro('https://restcountries.eu/rest/v2/region/europe').subscribe((data:any) => {
+      this.listaPaises= data;      
+    });
     
   }
 
   ngOnInit(): void {
-    this.traerListaActualizada();
-  }
-
-  traerListaActualizada(){
-      this.elementos = this.dbService.traerColeccion('peliculas');
-      this.elementos.subscribe(elementos => this.listaElementos = elementos,error => console.log(error));
-  }
-
-  traerDetalle(elemento){
-    this.elementoDetalle = elemento;
-  }
-
-  agarrarBorrarPelicula(pelicula:any){
-    this.dbService.borrarElemento('peliculas',pelicula.nombre);
+    
   }
 
   agarrarPais(pais:any){

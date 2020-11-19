@@ -23,6 +23,9 @@ import { TablaActorComponent } from './componentes/tabla-actor/tabla-actor.compo
 import { BorrarPeliculaComponent } from './componentes/borrar-pelicula/borrar-pelicula.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
 import { AltaActorComponent } from './componentes/alta-actor/alta-actor.component';
+import { DetalleActorComponent } from './componentes/detalle-actor/detalle-actor.component';
+import { BorrarActorComponent } from './componentes/borrar-actor/borrar-actor.component';
+import { ModificarActorComponent } from './componentes/modificar-actor/modificar-actor.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { AltaActorComponent } from './componentes/alta-actor/alta-actor.componen
     TablaActorComponent,
     BorrarPeliculaComponent,
     TablaPaisesComponent,
-    AltaActorComponent
+    AltaActorComponent,
+    DetalleActorComponent,
+    BorrarActorComponent,
+    ModificarActorComponent
   ],
   imports: [
     BrowserModule,

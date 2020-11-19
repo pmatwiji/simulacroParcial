@@ -1,1 +1,38 @@
-<p>pelicula-alta works!</p>
+<div class="background">
+    <div class="container m-5 d-flex justify-content-center">
+      <div class="row mt-5 ">
+        <div class="col ">
+          <h4 class="mb-3">Alta pelicula</h4>
+          <form class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="nombre">Titulo</label>
+              <input [(ngModel)]="titulo" type="text" class="form-control" name="titulo" placeholder="Titulo">
+            </div>
+  
+            <div class="mb-3">
+              <label for="anio">Año</label>
+              <input [(ngModel)]="anio" type="text" class="form-control" name="anio" placeholder="Año">
+            </div>
+  
+            <div class="mb-3">
+              <label for="genero">Genero</label>
+              <input [(ngModel)]="genero" type="text" class="form-control" name="genero" placeholder="Genero">
+            </div>
+  
+            <div class="mb-3">
+                <label for="actor">Actor</label>
+                <input [(ngModel)]="actor" type="text" class="form-control" name="actor" placeholder="Actor" disabled>
+            </div>
+  
+            <button class="btn btn-primary btn-lg btn-block" type="button" (click)="crearPelicula()">Cargar Pelicula</button>
+            <p class="mt-2" *ngIf="correcto">Se cargo correctamente</p>
+          </form>
+        </div>
+  
+        <app-tabla-actor class="col" (ActorEmitido)="agarrarActor($event)" [listaActores]="listaActores"></app-tabla-actor>
+        <!-- <app-tabla-paises class="col" (paisEmitido)="agarrarPais($event)" [listaPaises]="listaPaises"></app-tabla-paises> -->
+  
+      </div>
+    </div>
+  </div>
+  

@@ -1,15 +1,25 @@
-<app-tabla-actor [coleccionActores]="listaActores" (detallesEvent)="traerDetalle($event)" (borrarEvent)="traerBorrar($event)"></app-tabla-actor>
+<main role="main">
+  <div class="jumbotron">
 
-<div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-      <app-borrar-pelicula [inputElementoBorrar]="elementoBorrar" class="col-md-4" *ngIf="elementoBorrar"></app-borrar-pelicula>
-
-      <app-detalle-pelicula [inputElementoDetalle]="elementoDetalle" class="col-md-4" *ngIf="elementoDetalle"></app-detalle-pelicula>
-
+    <div class="col-md d-flex flex-wrap justify-content-center ">
+      <div class="card m-4 shadow-sm" *ngFor="let actor of listaActores">
+        <img src="{{actor.foto}}" alt="" class="card-img-top" style="width: 300px; height: 500px;">
+        <p class="card-text text-center mt-3">{{actor.nombre}} {{actor.apellido}}</p>
+        <div class="card-body d-flex row justify-content-around">
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarActor(actor);opcion='detalle'">Detalle</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarActor(actor);opcion='borrar'">Borrar</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarActor(actor);opcion='modificar'">Modificar</button>
+        </div>
+      </div>
     </div>
 
-    <hr>
+  </div>
+</main>
 
+<div class="container">
+  <div class="row">
+      <app-borrar-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='borrar'" (mandarBorrarEvent)="accion($event,actorSeleccionado)"></app-borrar-actor>
+      <app-detalle-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='detalle'"></app-detalle-actor>
+      <app-modificar-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='modificar'" (mandarModificarEvent)="accion($event,actorSeleccionado)"></app-modificar-actor>
+  </div>
 </div>
-

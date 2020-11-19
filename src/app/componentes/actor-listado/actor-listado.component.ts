@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatabaseService } from '../../servicios/database.service';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-actor-listado',
@@ -9,10 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class ActorListadoComponent implements OnInit {
 
-  elementosActor:Observable<any[]>;
+  
+
+
+
   listaActores: any;
-  elementoDetalle: any;
-  elementoBorrar: any;
+  actorSeleccionado;
+  opcion;
+
 
   constructor(private dbService: DatabaseService) { }
 
@@ -21,15 +25,41 @@ export class ActorListadoComponent implements OnInit {
   }
 
   traerListaActualizada(){
-    this.elementosActor = this.dbService.traerColeccion('actores');
-    this.elementosActor.subscribe(elementos => this.listaActores = elementos,error => console.log(error));
+    this.dbService.traerColeccion('actores').subscribe(datos => this.listaActores = datos);
   }
 
-  traerDetalle(elemento){
-    this.elementoDetalle = elemento;
+  seleccionarActor(actor){
+    this.actorSeleccionado= actor;
   }
 
-  traerBorrar(elemento){
-    this.elementoBorrar = elemento;
+  accion(opcion,actor){
+    switch (opcion) {
+      case 'borrar':
+        this.dbService.borrarElemento('actores',actor.nombreDoc)
+      break;
+    
+      default:
+        break;
+    }
   }
+
+  // traerDetalle(elemento){
+  //   this.elementoDetalle = elemento;
+  // }
+
+  // traerBorrar(elemento){
+  //   this.elementoBorrar = elemento;
+  // }
+
+  // verDetallesActor(actor){
+  //   this.detallesEvent.emit(actor);
+  // }
+
+  // verBorrarActor(actor){
+  //   this.borrarEvent.emit(actor);
+  // }
+
+  // verModificarActor(actor){
+  //   this.modificarEvent.emit(actor);
+  // }
 }
