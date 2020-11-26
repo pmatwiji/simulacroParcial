@@ -1,0 +1,27 @@
+<main role="main">
+    <div class="jumbotron">
+  
+      <div class="col-md d-flex flex-wrap justify-content-center ">
+        <div class="card m-4 shadow-sm" *ngFor="let actor of listaActores">
+          <img src="{{actor.foto}}" alt="" class="card-img-top" style="width: 300px; height: 500px;">
+          <p class="card-text text-center mt-3">{{actor.nombre}} {{actor.apellido}}</p>
+          <div class="card-body d-flex row justify-content-around">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarPeliculas(actor);opcion='peliculas'">Peliculas</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarPais(actor.nacionalidad);opcion='pais'">Pais</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="seleccionarActor(actor);opcion='detalles'">Detalles</button>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </main>
+  
+  <div class="container">
+    <div class="row">
+        <!-- <app-borrar-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='borrar'" ></app-borrar-actor>
+        <app-detalle-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='detalle'"></app-detalle-actor> -->
+        <app-peliculas-actor class="col-md-4" [inputListaPeliculas]="listaPeliculas" *ngIf="opcion=='peliculas'"></app-peliculas-actor>
+        <app-pais-actor class="col-md-4" [inputPaisActorSeleccionado]="paisSeleccionado" *ngIf="opcion=='pais'"></app-pais-actor>
+        <app-detalle-actor class="col-md-4" [inputActorSeleccionado]="actorSeleccionado" *ngIf="opcion=='detalles'" ></app-detalle-actor>
+    </div>
+</div>

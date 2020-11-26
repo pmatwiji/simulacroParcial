@@ -1,0 +1,14 @@
+<div class="row">
+    <h2>Lista de peliculas: </h2>
+    <div *ngFor="let pelicula of inputListaPeliculas" class="col">
+        <div class="col">
+            <img [src]="pelicula.fotoPelicula ? pelicula.fotoPelicula : 'https://www.tibs.org.tw/images/default.jpg'" alt="" class="card-img-top">
+            <p class="font-weight-bold">Titulo: <span class="font-weight-normal">{{pelicula.titulo}}</span></p>
+        </div>
+        
+
+    </div>
+    
+
+    
+</div>

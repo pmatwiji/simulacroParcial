@@ -5,6 +5,7 @@ import { BienvenidoComponent } from './componentes/bienvenido/bienvenido.compone
 import { AltaActorComponent } from './componentes/alta-actor/alta-actor.component';
 import { ActorListadoComponent } from './componentes/actor-listado/actor-listado.component';
 import { PeliculaAltaComponent } from './componentes/pelicula-alta/pelicula-alta.component';
+import { ActorPeliculaComponent } from './componentes/actor-pelicula/actor-pelicula.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'bienvenido', component: BienvenidoComponent},
   {path: 'actor/alta', component: AltaActorComponent},
   {path: 'actor/listado', component: ActorListadoComponent},
-  {path: 'peliculas/alta', component: PeliculaAltaComponent}
+  {path: 'peliculas/alta', component: PeliculaAltaComponent},
+  {path: 'actor/actorPelicula', component: ActorPeliculaComponent}
 ];
 
 @NgModule({
