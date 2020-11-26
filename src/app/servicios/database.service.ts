@@ -16,6 +16,14 @@ export class DatabaseService {
     return this.db.collection('peliculas', ref => ref.where('actor','==',actor)).valueChanges();
 }
 
+traerListaPeliculasDePais(pais:string){
+  return this.db.collection('peliculas', ref => ref.where('paisOrigen','==',pais)).valueChanges();
+}
+
+traerListaActoresDePais(pais:string){
+  return this.db.collection('actores', ref => ref.where('nacionalidad','==',pais)).valueChanges();
+}
+
   agregarElemento(coleccion:string,documento:string,data:any){
     let ref = this.db.collection(coleccion);
     ref.doc(documento).set(data);

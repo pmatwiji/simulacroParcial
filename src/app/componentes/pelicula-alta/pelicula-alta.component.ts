@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DatabaseService } from '../../servicios/database.service';
+import { ApiPaisesService } from '../../servicios/api-paises.service';
 
 
 @Component({
@@ -14,13 +15,19 @@ export class PeliculaAltaComponent implements OnInit {
   genero;
   actor:any;
   correcto:boolean = false;
+  paisOrigen;
  
   listaActores:any;
+  listaPaises;
   
 
 
-  constructor(private dbService: DatabaseService,) { 
-    this.dbService.traerColeccion('actores').subscribe(datos => this.listaActores=datos)
+  constructor(private dbService: DatabaseService,private api:ApiPaisesService) { 
+    this.dbService.traerColeccion('actores').subscribe(datos => this.listaActores=datos);
+
+    this.api.obtenerListadoParametro('https://restcountries.eu/rest/v2/region/europe').subscribe((data:any) => {
+      this.listaPaises= data;      
+    });
     
   }
 
@@ -30,7 +37,7 @@ export class PeliculaAltaComponent implements OnInit {
 
   crearPelicula() {
     if(this.titulo != null && this.anio != null && this.genero != null && this.actor) {
-      this.dbService.agregarElemento('peliculas',this.titulo,{titulo:this.titulo,genero:this.genero,año:this.anio,actor:this.actor,activo:true, nombreDoc: this.titulo})
+      this.dbService.agregarElemento('peliculas',this.titulo,{titulo:this.titulo,genero:this.genero,año:this.anio,actor:this.actor,activo:true, nombreDoc: this.titulo,paisOrigen: this.paisOrigen})
       this.reset();
       this.correcto=true;
       setTimeout(() => {
@@ -48,6 +55,10 @@ export class PeliculaAltaComponent implements OnInit {
 
   agarrarActor(actor:any){
     this.actor=actor.nombre + ' ' + actor.apellido;
+  }
+
+  agarrarPais(pais:any){
+    this.paisOrigen=pais.name;
   }
 
 

@@ -1,5 +1,5 @@
 <div class="background">
-    <div class="container m-5 d-flex justify-content-center">
+    <div class="container-fluid m-5 d-flex justify-content-center">
       <div class="row mt-5 ">
         <div class="col ">
           <h4 class="mb-3">Alta pelicula</h4>
@@ -23,6 +23,11 @@
                 <label for="actor">Actor</label>
                 <input [(ngModel)]="actor" type="text" class="form-control" name="actor" placeholder="Actor" disabled>
             </div>
+
+            <div class="mb-3">
+              <label for="actor">Pais de origen</label>
+              <input [(ngModel)]="paisOrigen" type="text" class="form-control" name="paisOrigen" placeholder="Pais de origen" disabled>
+          </div>
   
             <button class="btn btn-primary btn-lg btn-block" type="button" (click)="crearPelicula()">Cargar Pelicula</button>
             <p class="mt-2" *ngIf="correcto">Se cargo correctamente</p>
@@ -30,6 +35,7 @@
         </div>
   
         <app-tabla-actor class="col" (ActorEmitido)="agarrarActor($event)" [listaActores]="listaActores"></app-tabla-actor>
+        <app-tabla-paises class="col" (paisEmitido)="agarrarPais($event)" [listaPaises]="listaPaises"></app-tabla-paises>
         <!-- <app-tabla-paises class="col" (paisEmitido)="agarrarPais($event)" [listaPaises]="listaPaises"></app-tabla-paises> -->
   
       </div>

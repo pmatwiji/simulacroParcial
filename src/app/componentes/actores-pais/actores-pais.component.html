@@ -1,0 +1,14 @@
+<div class="container-md">
+    <h2>Lista de actores: </h2>
+    <div *ngFor="let actor of inputListaActores" class="col">
+        <div class="col">
+            <img [src]="actor.foto ? actor.foto : 'https://www.tibs.org.tw/images/default.jpg'" alt="" class="card-img-top">
+            <p class="font-weight-bold">Nombre: <span class="font-weight-normal">{{actor.nombre}} {{actor.apellido}}</span></p>
+        </div>
+        
+
+    </div>
+    
+
+    
+</div>

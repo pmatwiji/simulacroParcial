@@ -29,6 +29,10 @@ import { ModificarActorComponent } from './componentes/modificar-actor/modificar
 import { ActorPeliculaComponent } from './componentes/actor-pelicula/actor-pelicula.component';
 import { PeliculasActorComponent } from './componentes/peliculas-actor/peliculas-actor.component';
 import { PaisActorComponent } from './componentes/pais-actor/pais-actor.component';
+import { PaisPeliculaComponent } from './componentes/pais-pelicula/pais-pelicula.component';
+import { PeliculasPaisComponent } from './componentes/peliculas-pais/peliculas-pais.component';
+import { DetallesPaisComponent } from './componentes/detalles-pais/detalles-pais.component';
+import { ActoresPaisComponent } from './componentes/actores-pais/actores-pais.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { PaisActorComponent } from './componentes/pais-actor/pais-actor.componen
     ModificarActorComponent,
     ActorPeliculaComponent,
     PeliculasActorComponent,
-    PaisActorComponent
+    PaisActorComponent,
+    PaisPeliculaComponent,
+    PeliculasPaisComponent,
+    DetallesPaisComponent,
+    ActoresPaisComponent
   ],
   imports: [
     BrowserModule,
